@@ -1,21 +1,34 @@
 import axios from 'axios'
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
-
+import { setCookie } from '../util/cookie'
+import jwt_decode from 'jwt-decode'
 function Login() {
   const [isId, setId] = useState('')
   const [isPassword, setPassword] = useState('')
+  const navigate = useNavigate()
   const LoginHandler = async () => {
-    const response = await axios.post(
-      `${process.env.MOCK_SERVER_URL}/login`,
-      {
-        id: isId,
-        password: isPassword,
-      },
-      { withCredentials: true }
-    )
-    console.log(response)
-    alert('로그인 요청보냄')
+    const res = await axios
+      .post(
+        `/login`,
+        {
+          id: isId,
+          password: isPassword,
+        },
+        { withCredentials: true }
+      )
+      .then((res) => {
+        const token = res.data.token
+        setCookie('accessJwtToken', token) // 쿠키에저장
+        const decodedUserInfo = jwt_decode(token) // 토큰 decode
+        localStorage.setItem('userInfo', JSON.stringify(decodedUserInfo))
+        alert('로그인완료')
+        navigate('/')
+      })
+      .catch((error) => {
+        alert(error.response.data.message)
+      })
   }
   return (
     <>
@@ -33,7 +46,6 @@ function Login() {
           width="200px"
           fontWeight="600"
           bgColor="#fff"
-          color="red"
           border="3px solid #55EFC4"
           height="50px"
           onClick={LoginHandler}
@@ -44,11 +56,10 @@ function Login() {
           width="200px"
           fontWeight="600"
           bgColor="#fff"
-          color="red"
           border="3px solid orange"
           height="50px"
           onClick={() => {
-            alert('버튼을 만들어보세요')
+            navigate('/join')
           }}
         >
           회원가입
