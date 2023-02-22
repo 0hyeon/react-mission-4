@@ -33,7 +33,7 @@ function Login() {
       .catch((error) => {
         alert(error.response.data.message)
       })
-    dispatch(userCreate({ login: true }))
+    // dispatch(userCreate({ login: true }))
   }
   return (
     <>
@@ -100,6 +100,9 @@ export const H1 = styled.div`
 `
 export const Input = styled.input`
   width: 100%;
+  border: 1px solid #000;
+  border-radius: 15px;
+  padding-left: 15px;
   height: 40px;
   font-size: 20px;
 `

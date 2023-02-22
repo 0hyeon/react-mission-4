@@ -14,7 +14,6 @@ function CreateForm({ authenticated }: any) {
   console.log(data)
   useEffect(() => {
     if (getUser() === null) {
-      alert('로그인을해주십시요')
       navigate('/login')
     }
   }, [])

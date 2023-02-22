@@ -9,7 +9,6 @@ export interface Iusers {
 }
 const getTodos = async () => {
   const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/todos`)
-  console.log(response.data)
   return response.data
 }
 const addTodos = async (newTodo: Iusers) => {
@@ -18,12 +17,14 @@ const addTodos = async (newTodo: Iusers) => {
 const deleteTodos = async (id: number) => {
   await axios.delete(`${process.env.REACT_APP_SERVER_URL}/todos/${id}`)
 }
-const updateTodos = async (id: number) => {
-  const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/todos`)
-  let data = response.data.find((x: any) => x.id === id).done
+const updateTodos = async (el: Iusers) => {
   let doneData = {
-    done: !data,
+    title: el.title,
+    content: el.content,
   }
-  await axios.patch(`${process.env.REACT_APP_SERVER_URL}/todos/${id}`, doneData)
+  await axios.patch(
+    `${process.env.REACT_APP_SERVER_URL}/todos/${el.id}`,
+    doneData
+  )
 }
 export { getTodos, addTodos, deleteTodos, updateTodos }

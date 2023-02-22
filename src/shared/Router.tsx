@@ -7,10 +7,10 @@ import Login from '../page/Login'
 import Product from '../page/Product'
 import ProductList from '../page/ProductList'
 import TopNav from '../page/TopNav'
+import Update from '../page/Update'
 import { getUser } from '../util/localstorage'
 const Router = () => {
   const userInfo = getUser()
-  console.log(userInfo)
   return (
     <BrowserRouter>
       <Routes>
@@ -26,6 +26,7 @@ const Router = () => {
           <Route path="/join" element={<Join />} />
           <Route path="/createform" element={<CreateForm />} />
           <Route path="/productlist" element={<ProductList />} />
+          <Route path="/update/:id" element={<Update />} />
         </Route>
       </Routes>
     </BrowserRouter>

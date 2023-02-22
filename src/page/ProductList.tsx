@@ -1,14 +1,13 @@
 import React from 'react'
 import { useMutation, useQuery, useQueryClient } from 'react-query'
-import { useNavigation } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { deleteTodos, getTodos } from '../axios/todos'
 import { CenterWrapper } from './Login'
 
 function ProductList() {
-  const navigation = useNavigation()
   const { isLoading, isError, data } = useQuery('todos', getTodos)
-  console.log(data)
 
+  const navigation = useNavigate()
   const queryClient = useQueryClient()
   const mutationDel = useMutation(deleteTodos, {
     onSuccess: () => {
@@ -21,7 +20,9 @@ function ProductList() {
       mutationDel.mutate(id)
     }
   }
-  const UpdateClick = (id: number) => {}
+  const UpdateClick = (id: number) => {
+    navigation(`/update/${id}`)
+  }
   return (
     <>
       <CenterWrapper>
