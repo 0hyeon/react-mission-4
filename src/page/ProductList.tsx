@@ -1,14 +1,16 @@
 import React from 'react'
 import { useMutation, useQuery, useQueryClient } from 'react-query'
 import { useNavigate } from 'react-router-dom'
+import styled from 'styled-components'
 import { deleteTodos, getTodos } from '../axios/todos'
-import { CenterWrapper } from './Login'
-
+import { Button, ButtonWrap, CenterWrapper } from './Login'
+import { getUser } from '../util/localstorage'
 function ProductList() {
   const { isLoading, isError, data } = useQuery('todos', getTodos)
-
+  const userInfo = getUser()
   const navigation = useNavigate()
   const queryClient = useQueryClient()
+
   const mutationDel = useMutation(deleteTodos, {
     onSuccess: () => {
       queryClient.invalidateQueries('todos')
@@ -23,22 +25,67 @@ function ProductList() {
   const UpdateClick = (id: number) => {
     navigation(`/update/${id}`)
   }
+  const onClickBack = () => {
+    navigation(-1)
+  }
   return (
     <>
       <CenterWrapper>
         {data?.map((el: any) => {
           return (
-            <div key={el.id}>
-              id : {el.id} title : {el.title} content : {el.content}
+            <EleWrapper key={el.id}>
+              <EleInner>
+                <EleInnerEl>ID : {el.id} </EleInnerEl>
+                <EleInnerEl>Title : {el.title}</EleInnerEl>
+                <EleInnerEl>Content : {el.content}</EleInnerEl>
+              </EleInner>
               &nbsp;
-              <button onClick={() => RemoveClick(el.id)}>삭제</button>
-              <button onClick={() => UpdateClick(el.id)}>수정</button>
-            </div>
+              {}
+              {userInfo !== null && (
+                <ButtonWrap>
+                  <Button
+                    width="50px"
+                    bgColor="#000"
+                    color="#fff"
+                    onClick={() => RemoveClick(el.id)}
+                  >
+                    삭제
+                  </Button>
+                  <Button
+                    width="50px"
+                    bgColor="#fff"
+                    color="#000"
+                    border="2px solid #000"
+                    onClick={() => UpdateClick(el.id)}
+                  >
+                    수정
+                  </Button>
+                </ButtonWrap>
+              )}
+            </EleWrapper>
           )
         })}
+        <Button bgColor="black" color="#fff" onClick={onClickBack}>
+          뒤로가기
+        </Button>
       </CenterWrapper>
     </>
   )
 }
-
+const EleWrapper = styled.div`
+  border: 3px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 15px;
+`
+const EleInner = styled.div`
+  margin-right: 15px;
+  padding: 5px;
+`
+const EleInnerEl = styled.div`
+  margin-bottom: 7px;
+`
 export default ProductList

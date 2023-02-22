@@ -107,9 +107,8 @@ export const Input = styled.input`
   font-size: 20px;
 `
 export const ButtonWrap = styled.div`
-  margin-top: 30px;
-  display: flex;
-  gap: 30px;
+  display: inline-flex;
+  gap: 10px;
 `
 export const Button = styled.button<{
   width?: string
