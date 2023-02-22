@@ -11,7 +11,7 @@ const TopNav = ({ children, user }: any) => {
     if (window.confirm('로그아웃 하시겠습니까?')) {
       removeUser()
       window.location.reload()
-      navigate('/')
+      navigate('/login')
       alert('로그아웃완료')
     }
     return

@@ -1,17 +1,16 @@
 import React, { useCallback, useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { getUser, removeUser } from '../util/localstorage'
 import { Button, ButtonWrap } from './Login'
 import { CenterWrapper } from './Login'
 function Home({ authenticated }: any) {
-  console.log('authenticated : ', authenticated)
-  const [login, setLogin] = useState(false)
   const fetchUser = useCallback(() => getUser(), [])
-
+  const navigate = useNavigate()
   const onListClick = () => {
-    alert('List')
+    navigate('/productlist')
   }
   const onCreateClick = () => {
-    alert('Click')
+    navigate('/createform')
   }
   return (
     <CenterWrapper>
