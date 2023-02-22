@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
+import { Button, ButtonWrap, CenterWrapper, H1, Input, Label } from './Login'
 
 function Join() {
   const [isId, setId] = useState('')
@@ -27,66 +28,48 @@ function Join() {
   }
   return (
     <>
-      <H1>회원가입</H1>
-      <div>아이디</div>
-      <input type="text" value={isId} onChange={(e) => setId(e.target.value)} />
-      <div>비밀번호</div>
-      <input
-        type="password"
-        value={isPassword}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <div>
-        <Button
-          width="200px"
-          fontWeight="600"
-          bgColor="#fff"
-          border="3px solid #55EFC4"
-          height="50px"
-          onClick={JoinHandler}
-        >
-          화원가입하기
-        </Button>
-        <Button
-          width="200px"
-          fontWeight="600"
-          bgColor="#fff"
-          border="3px solid orange"
-          height="50px"
-          onClick={() => {
-            navigate('/login')
-          }}
-        >
-          로그인
-        </Button>
-      </div>
+      <CenterWrapper>
+        <H1>회원가입</H1>
+        <Label>아이디</Label>
+        <Input
+          type="text"
+          value={isId}
+          onChange={(e) => setId(e.target.value)}
+        />
+        <Label>비밀번호</Label>
+        <Input
+          type="password"
+          value={isPassword}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <ButtonWrap>
+          <Button
+            width="150px"
+            fontWeight="600"
+            bgColor="#000"
+            border="3px solid #fff"
+            color="white"
+            height="50px"
+            onClick={JoinHandler}
+          >
+            화원가입하기
+          </Button>
+          <Button
+            width="150px"
+            fontWeight="600"
+            bgColor="#fff"
+            border="3px solid black"
+            height="50px"
+            onClick={() => {
+              navigate('/login')
+            }}
+          >
+            로그인
+          </Button>
+        </ButtonWrap>
+      </CenterWrapper>
     </>
   )
 }
-const H1 = styled.div`
-  font-weight: bold;
-  font-size: 25px;
-`
-export const Button = styled.button<{
-  width?: string
-  bgColor?: string
-  color?: string
-  border?: string
-  fontWeight?: string
-  height?: string
-}>`
-  border: ${(props) => (props.border ? props.border : null)};
-  cursor: pointer;
-  border-radius: 8px;
-  background-color: ${(props) => (props.bgColor ? props.bgColor : null)};
-  color: ${({ color }) => (color ? color : '#000')};
-  height: ${(props) => (props.height ? props.height : '45px')};
-  padding: 1px 6px;
 
-  font-weight: ${(props) => (props.fontWeight ? props.fontWeight : null)};
-  width: ${(props) => (props.width ? props.width : '110px')};
-  &:active {
-    filter: brightness(50%);
-  }
-`
 export default Join

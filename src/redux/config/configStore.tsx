@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import crud from '../modules/crud'
+import user from '../modules/user'
 //ASIS :  일반리덕스
 
 // 중앙데이터관리소
@@ -12,6 +13,7 @@ import crud from '../modules/crud'
 const store = configureStore({
   reducer: {
     crud,
+    user,
   },
 })
 
