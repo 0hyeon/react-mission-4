@@ -63,5 +63,6 @@
       "prettier --write",
       "git add"
     ]
-  }
+  },
+  "proxy": "http://3.38.191.164"
 }

@@ -14,7 +14,7 @@ function Login() {
   const LoginHandler = async () => {
     const res = await axios
       .post(
-        process.env.REACT_APP_MOCK_SERVER_URL + `/login`,
+        `/login`,
         {
           id: isId,
           password: isPassword,
@@ -31,6 +31,7 @@ function Login() {
         navigate('/')
       })
       .catch((error) => {
+        console.log(error)
         alert(error.response.data.message)
       })
     // dispatch(userCreate({ login: true }))
