@@ -10,6 +10,7 @@ function CreateForm({ authenticated }: any) {
   const [isTitle, setTitle] = useState('')
   const [isContent, setContent] = useState('')
   const queryClient = useQueryClient()
+
   const { isLoading, isError, data } = useQuery('todos', getTodos)
   console.log(data)
   // useEffect(() => {
@@ -28,6 +29,7 @@ function CreateForm({ authenticated }: any) {
   const onhandleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
     if (isTitle === '' || isContent === '') {
+      alert('값을 채워주세요')
       return
     }
     const newUser = {
@@ -42,6 +44,7 @@ function CreateForm({ authenticated }: any) {
     mutation.mutate(newUser) //react-query
     setTitle('')
     setContent('')
+    navigate('/')
   }
   return (
     <>

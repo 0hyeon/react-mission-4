@@ -10,7 +10,6 @@ function ProductList() {
   const userInfo = getUser()
   const navigation = useNavigate()
   const queryClient = useQueryClient()
-  console.log('data : ', data)
   const mutationDel = useMutation(deleteTodos, {
     onSuccess: () => {
       queryClient.invalidateQueries('todos')
