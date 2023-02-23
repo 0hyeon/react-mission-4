@@ -14,7 +14,7 @@ function Login() {
   const LoginHandler = async () => {
     const res = await axios
       .post(
-        `${process.env.MOCK_SERVER_URL}/login`,
+        `http://3.38.191.164/login`,
         {
           id: isId,
           password: isPassword,

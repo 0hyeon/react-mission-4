@@ -31,40 +31,41 @@ function ProductList() {
   return (
     <>
       <CenterWrapper>
-        {data?.map((el: any) => {
-          return (
-            <EleWrapper key={el.id}>
-              <EleInner>
-                <EleInnerEl>ID : {el.id} </EleInnerEl>
-                <EleInnerEl>Title : {el.title}</EleInnerEl>
-                <EleInnerEl>Content : {el.content}</EleInnerEl>
-              </EleInner>
-              &nbsp;
-              {}
-              {userInfo !== null && (
-                <ButtonWrap>
-                  <Button
-                    width="50px"
-                    bgColor="#000"
-                    color="#fff"
-                    onClick={() => RemoveClick(el.id)}
-                  >
-                    삭제
-                  </Button>
-                  <Button
-                    width="50px"
-                    bgColor="#fff"
-                    color="#000"
-                    border="2px solid #000"
-                    onClick={() => UpdateClick(el.id)}
-                  >
-                    수정
-                  </Button>
-                </ButtonWrap>
-              )}
-            </EleWrapper>
-          )
-        })}
+        {data &&
+          data?.map((el: any) => {
+            return (
+              <EleWrapper key={el.id}>
+                <EleInner>
+                  <EleInnerEl>ID : {el.id} </EleInnerEl>
+                  <EleInnerEl>Title : {el.title}</EleInnerEl>
+                  <EleInnerEl>Content : {el.content}</EleInnerEl>
+                </EleInner>
+                &nbsp;
+                {}
+                {userInfo !== null && (
+                  <ButtonWrap>
+                    <Button
+                      width="50px"
+                      bgColor="#000"
+                      color="#fff"
+                      onClick={() => RemoveClick(el.id)}
+                    >
+                      삭제
+                    </Button>
+                    <Button
+                      width="50px"
+                      bgColor="#fff"
+                      color="#000"
+                      border="2px solid #000"
+                      onClick={() => UpdateClick(el.id)}
+                    >
+                      수정
+                    </Button>
+                  </ButtonWrap>
+                )}
+              </EleWrapper>
+            )
+          })}
         <Button bgColor="black" color="#fff" onClick={onClickBack}>
           뒤로가기
         </Button>
