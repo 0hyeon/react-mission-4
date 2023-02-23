@@ -15,7 +15,7 @@ function Join() {
       password: isPassword,
     }
     axios
-      .post(`http://3.38.191.164/register`, body, {
+      .post(`3.38.191.164/register`, body, {
         withCredentials: true,
       })
       .then((res) => {

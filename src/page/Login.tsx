@@ -14,7 +14,7 @@ function Login() {
   const LoginHandler = async () => {
     const res = await axios
       .post(
-        `http://3.38.191.164/login`,
+        `3.38.191.164/login`,
         {
           id: isId,
           password: isPassword,
