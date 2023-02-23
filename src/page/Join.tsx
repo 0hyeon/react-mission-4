@@ -66,6 +66,18 @@ function Join() {
           >
             로그인
           </Button>
+          <Button
+            width="150px"
+            fontWeight="600"
+            bgColor="#fff"
+            border="3px solid black"
+            height="50px"
+            onClick={() => {
+              navigate('/')
+            }}
+          >
+            Home
+          </Button>
         </ButtonWrap>
       </CenterWrapper>
     </>

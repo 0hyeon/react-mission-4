@@ -12,11 +12,11 @@ function CreateForm({ authenticated }: any) {
   const queryClient = useQueryClient()
   const { isLoading, isError, data } = useQuery('todos', getTodos)
   console.log(data)
-  useEffect(() => {
-    if (getUser() === null) {
-      navigate('/login')
-    }
-  }, [])
+  // useEffect(() => {
+  //   if (getUser() === null) {
+  //     navigate('/login')
+  //   }
+  // }, [])
 
   const mutation = useMutation(addTodos, {
     onSuccess: () => {

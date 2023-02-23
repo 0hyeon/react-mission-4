@@ -76,6 +76,18 @@ function Login() {
           >
             회원가입
           </Button>
+          <Button
+            width="150px"
+            fontWeight="600"
+            bgColor="#fff"
+            border="3px solid black"
+            height="50px"
+            onClick={() => {
+              navigate('/')
+            }}
+          >
+            Home
+          </Button>
         </ButtonWrap>
       </CenterWrapper>
     </>
@@ -89,7 +101,7 @@ export const CenterWrapper = styled.div`
   font-family: 'LINESeedKR-Bd';
 `
 export const Label = styled.div`
-  margin: 30px 0px 10px;
+  margin: 17px 0px 10px;
 
   font-size: 20px;
   font-weight: bold;
@@ -101,10 +113,10 @@ export const H1 = styled.div`
 `
 export const Input = styled.input`
   width: 100%;
-  border: 1px solid #000;
+  border: 2px solid #000;
   border-radius: 15px;
   padding-left: 15px;
-  height: 40px;
+  height: 50px;
   font-size: 20px;
 `
 export const ButtonWrap = styled.div`
