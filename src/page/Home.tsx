@@ -15,16 +15,16 @@ function Home({ authenticated }: any) {
   return (
     <CenterWrapper>
       <ButtonWrap>
-        {fetchUser() ? (
-          <Button
-            border="3px solid #000"
-            width="150px"
-            height="60px"
-            onClick={onCreateClick}
-          >
-            Create +
-          </Button>
-        ) : null}
+        {/* {fetchUser() ? ( */}
+        <Button
+          border="3px solid #000"
+          width="150px"
+          height="60px"
+          onClick={onCreateClick}
+        >
+          Create +
+        </Button>
+        {/* ) : null} */}
         <Button
           bgColor="#000"
           color="#fff"
