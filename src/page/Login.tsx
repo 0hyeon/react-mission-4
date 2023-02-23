@@ -41,17 +41,20 @@ function Login() {
       <CenterWrapper>
         <H1>로그인하기</H1>
         <Label>아이디</Label>
-        <Input
-          type="text"
-          value={isId}
-          onChange={(e) => setId(e.target.value)}
-        />
-        <Label>비밀번호</Label>
-        <Input
-          type="password"
-          value={isPassword}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <form onSubmit={LoginHandler} method="POST">
+          <Input
+            type="text"
+            value={isId}
+            onChange={(e) => setId(e.target.value)}
+          />
+          <Label>비밀번호</Label>
+          <Input
+            type="password"
+            value={isPassword}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button type="submit">로그인!!</button>
+        </form>
         <ButtonWrap>
           <Button
             width="150px"
