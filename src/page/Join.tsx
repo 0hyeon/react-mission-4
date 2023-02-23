@@ -15,7 +15,7 @@ function Join() {
       password: isPassword,
     }
     axios
-      .post(`/register`, body, {
+      .post(`${process.env.MOCK_SERVER_URL}/register`, body, {
         withCredentials: true,
       })
       .then((res) => {
